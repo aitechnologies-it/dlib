@@ -23,7 +23,7 @@ $ python setup.py install
 
 ## Get Started
 
-You can for example get the value from a nested field, just by indicating the path to tha nested sub-structure as follows:
+You can for example get the value from a nested field, just by indicating the path to the nested sub-structure as follows:
 
 ```python
 >>> import pydlib as dl

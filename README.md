@@ -1,9 +1,5 @@
 # :yarn: pydlib
-<<<<<<< HEAD
 The Python **d**ictionary **lib**rary to get into complex nested python dictionary structures (json-like) in a safe and clean way. We take inspiration from Greek myth of Minotaur, where Ariadne with the help of a thread escaped the labyrinth with his beloved Theseus.
-=======
-The Python **d**ictionary **lib**rary to get into complex nested python dictionary structures (e.g. json) in a safe and clean way.
->>>>>>> 9d72eb0db2604a2032e3979a7fbdbaa55e3ebcba
 
 ## Overview
 

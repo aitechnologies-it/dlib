@@ -65,7 +65,7 @@ Furthermore, the **pydlib** comes with built-in functions to also **update** and
 >>> import pydlib as dl
 
 >>> dictionary = { ... }
->>> dl.update(dictionary, path='path.to.nested.field', value='1')
+>>> dl.update(dictionary, path='path.to.nested.field', value=1)
 >>> dictionary = {
 >>>   'path': {
 >>>       'to': {

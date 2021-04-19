@@ -66,15 +66,15 @@ Furthermore, the **pydlib** comes with built-in functions to also **update** and
 
 >>> dictionary = { ... }
 >>> dl.update(dictionary, path='path.to.nested.field', value=1)
->>> dictionary = {
->>>   'path': {
->>>       'to': {
->>>          'nested': {
->>>             'field': 1
->>>           }
->>>        }
->>>    }
->>> }
+{
+   'path': {
+       'to': {
+          'nested': {
+             'field': 1
+           }
+        }
+    }
+}
 ```
 
 Instead, to **delete**:
@@ -84,11 +84,11 @@ Instead, to **delete**:
 
 >>> dictionary = { ... }
 >>> dl.delete(dictionary, path='path.to.nested.field')
->>> dictionary = {
->>>   'path': {
->>>       'to': {
->>>          'nested': { }
->>>        }
->>>    }
->>> }
+{
+   'path': {
+       'to': {
+          'nested': {}
+        }
+    }
+}
 ```

@@ -1,5 +1,5 @@
 # :yarn: pydlib
-The Python **d**ictionary **lib**rary to get into complex nested python dictionary structures (json-like) in a safe and clean way.
+The Python **d**ictionary **lib**rary to get into complex nested python dictionary structures (e.g. json) in a safe and clean way.
 
 ## Overview
 
@@ -16,7 +16,7 @@ $ pip install pydlib
 or install from the repository:
 
 ```bash
-$ git clone https://github.com/aitechnlogies-it/dlib.git
+$ git clone https://github.com/aitechnologies-it/dlib.git
 $ cd dlib
 $ python setup.py install
 ```

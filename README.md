@@ -55,7 +55,7 @@ You can also test for a field simply calling:
 >>> import pydlib as dl
 
 >>> dictionary = { ... }
->>> dl.has(dictionary, path='path.to.nested.field', default=0)
+>>> dl.has(dictionary, path='path.to.nested.field')
 True
 ```
 

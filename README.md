@@ -3,7 +3,7 @@ The **py**thon **d**ictionary **lib**rary to get into complex nested python dict
 
 ## Overview
 
-* [src/](src) contains all the underlying code implementing the dlib functions.
+* [src/pydlib](src/pydlib) contains all the underlying code implementing the pydlib functions.
 
 ## Installation
 

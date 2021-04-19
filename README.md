@@ -93,7 +93,7 @@ Instead, to **delete**:
 }
 ```
 
-pydlib is **type safe**, in fact you do have to manually check the type of inputs:
+pydlib is **type safe**, in fact you don't have to manually check the type of inputs, pydlib does it for you:
 
 ```python
 >>> import pydlib as dl

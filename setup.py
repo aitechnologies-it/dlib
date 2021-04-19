@@ -4,16 +4,16 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="dlib", # Replace with your own username
+    name="pydlib", # Replace with your own username
     version="0.0.1",
     author="Luigi Di Sotto",
     author_email="l.disotto@gmail.com",
     description="The Dictionary Library.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/luigidisotto/dlib",
+    url="https://github.com/aitechnologies-it/dlib",
     project_urls={
-        "Bug Tracker": "https://github.com/luigidisotto/dlib/issues",
+        "Bug Tracker": "https://github.com/aitechnologies-it/dlib/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",

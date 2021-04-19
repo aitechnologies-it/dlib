@@ -1,5 +1,5 @@
-# :yarn: dlib
-The **d**ictionary **lib**rary to get into complex nested python dictionary structures (json-like) in a safe and clean way.
+# :yarn: pydlib
+The Python **d**ictionary **lib**rary to get into complex nested python dictionary structures (json-like) in a safe and clean way.
 
 ## Overview
 

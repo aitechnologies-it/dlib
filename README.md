@@ -7,7 +7,7 @@ The **py**thon **d**ictionary **lib**rary to get into complex nested python dict
 
 ## Installation
 
-To install dlib, simply use `pip`:
+To install pydlib, simply use `pip`:
 
 ```bash
 $ pip install pydlib
@@ -91,4 +91,14 @@ Instead, to **delete**:
         }
     }
 }
+```
+
+pydlib is **type safe**, in fact you do have to manually check the type of inputs:
+
+```python
+>>> import pydlib as dl
+
+>>> res = dl.get("not a dictionary", path="nowhere", default=None)
+>>> res is None
+True
 ```

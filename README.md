@@ -53,6 +53,7 @@ You can also test for a field simply calling:
 
 ```python
 >>> import pydlib as dl
+
 >>> dictionary = { ... }
 >>> dl.has(dictionary, path='path.to.nested.field', default=0)
 True
@@ -62,6 +63,7 @@ Furthermore, the **pydlib** comes with built-in functions to also **update** and
 
 ```python
 >>> import pydlib as dl
+
 >>> dictionary = { ... }
 >>> dl.update(dictionary, path='path.to.nested.field', value='1')
 >>> dictionary = {
@@ -79,6 +81,7 @@ Instead, to **delete**:
 
 ```python
 >>> import pydlib as dl
+
 >>> dictionary = { ... }
 >>> dl.delete(dictionary, path='path.to.nested.field')
 >>> dictionary = {

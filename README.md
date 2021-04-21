@@ -3,11 +3,11 @@ The **py**thon **d**ictionary **lib**rary to get into complex nested python dict
 
 ## Overview
 
-* [src/](src) contains all the underlying code implementing the dlib functions.
+* [src/pydlib](src/pydlib) contains all the underlying code implementing the pydlib functions.
 
 ## Installation
 
-To install pydlib, simply use `pip`:
+To install **pydlib**, simply use `pip`:
 
 ```bash
 $ pip install pydlib
@@ -23,7 +23,9 @@ $ python setup.py install
 
 ## Get Started
 
-You can for example get the value from a nested field, just by indicating the path to tha nested sub-structure as follows:
+### get
+
+You can **get** the value from a nested field, just by indicating the path to the nested sub-structure as follows:
 
 ```python
 >>> import pydlib as dl
@@ -49,15 +51,19 @@ Instead, if the field we are looking for doesn't exists, or, if it exists but ha
 0
 ```
 
+### has
+
 You can also test for a field simply calling:
 
 ```python
 >>> import pydlib as dl
 
 >>> dictionary = { ... }
->>> dl.has(dictionary, path='path.to.nested.field', default=0)
+>>> dl.has(dictionary, path='path.to.nested.field')
 True
 ```
+
+### update
 
 Furthermore, the **pydlib** comes with built-in functions to also **update** and **delete** fields. For example, to **update**:
 
@@ -77,6 +83,8 @@ Furthermore, the **pydlib** comes with built-in functions to also **update** and
 }
 ```
 
+### delete
+
 Instead, to **delete**:
 
 ```python
@@ -92,6 +100,8 @@ Instead, to **delete**:
     }
 }
 ```
+
+### Type-safety
 
 pydlib is **type safe**, in fact you don't have to manually check the type of inputs, pydlib does it for you:
 

@@ -112,3 +112,20 @@ pydlib is **type safe**, in fact you don't have to manually check the type of in
 >>> res is None
 True
 ```
+
+### Custom separator
+
+It may happen that a dictionary has a string key with `.` in it. In this case you should use a different separator:
+
+```python
+>>> import pydlib as dl
+
+>>> d = {"a": {"b.c": 42}}
+
+# Separator conflict
+>>> dl.get(d, "a.b.c")
+None
+
+# This works!
+>>> dl.get(d, "a/b.c", sep="/")
+42

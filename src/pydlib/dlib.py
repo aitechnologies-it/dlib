@@ -1,24 +1,28 @@
-from typing import Optional, Any
+from typing import Optional, Any, Union
 from flatten_dict import flatten, unflatten
 
 
 DEFAULT_SEP = '.'
 
 
-def _get(d: dict, path: str, sep: str) -> Optional[dict]:
+def _get(d: Union[dict, list], path: str, sep: str) -> Optional[Union[dict, list]]:
     keys = path.split(sep)
     keys.reverse()
     curr = d
-    while keys and isinstance(curr, dict):
+    while keys and isinstance(curr, (dict, list)):
         k = keys.pop()
-        curr = curr.get(k, None)
+        if isinstance(curr, dict):
+            curr = curr.get(k)
+        else: # list
+            curr = [get(el, k, sep) for el in curr]
+            curr = [el for el in curr if el is not None]
     if len(keys) > 0:
         return None
     return curr
 
 
-def has(d: dict, path: str, sep: str = DEFAULT_SEP) -> bool:
-    if not isinstance(d, dict) or d is None or d == {}:
+def has(d: Union[dict, list], path: str, sep: str = DEFAULT_SEP) -> bool:
+    if not isinstance(d, (dict, list)) or d is None or d == {} or d == []:
         return False
     if not isinstance(path, str) or path is None or path == '':
         return False
@@ -26,13 +30,13 @@ def has(d: dict, path: str, sep: str = DEFAULT_SEP) -> bool:
     return curr is not None
 
 
-def get(d: dict, path: str, sep: str = DEFAULT_SEP, default: Any = None):
+def get(d: Union[dict, list], path: str, sep: str = DEFAULT_SEP, default: Any = None):
     if not has(d, path, sep):
         return default
     return _get(d, path, sep)
 
 
-def update(d: dict, path: str, value: Any, sep: str = DEFAULT_SEP):
+def update(d: Union[dict, list], path: str, value: Any, sep: str = DEFAULT_SEP):
     if not has(d, path, sep):
         return d
     keys = tuple(path.split(sep))

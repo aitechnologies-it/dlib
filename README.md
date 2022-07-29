@@ -129,3 +129,68 @@ None
 # This works!
 >>> dl.get(d, "a/b.c", sep="/")
 42
+```
+
+### Search inside lists
+
+If pydlib encounters a list, it will continue the search for the current key in every inner dict and return a list with all the dictionaries matching the rest of the path. A couple of examples:
+
+```python
+# `b` is a list, get() will return all dictionaries containing the rest of the path `c.d`
+>>> d = {"a":
+            {"b": [
+                {"c":   {"d":   1}}, # <-- this
+                {"bad": {"d":   2}},
+                {"c":   {"d":   3}}, # <-- this
+                {"c":   {"bad": 4}}
+            ]
+        }
+    }
+
+>>> dl.get(d, "a.b.c.d")
+[1, 3]
+```
+
+```python
+# it works also for nested lists: get() returns a nested list of matching depth (in the examples `b` and `d` are lists)
+>>> d = {"a":
+            {"b": [
+                {"c":
+                    {"d": [
+                        {"e":   1},
+                        {"e":   2},
+                        {"bad": 3},
+                    ]}
+                },
+                {"bad":
+                    {"d": [
+                        {"e":   4},
+                    ]}
+                },
+                {"c":
+                    {"d": [
+                        {"e": 5},
+                    ]}
+                },
+            ]
+        }
+    }
+
+>>> dl.get(d, "a.b.c.d.e")
+[[1, 2], [5]]
+```
+
+```python
+# In this case the elements of list `b` are different, two are dictionaries ([i] and [iii]), one is a list ([ii])
+>>> d = {"a":
+            {"b": [
+                {"c": {"d": 1}},     # [i]
+                [ {"c": {"d": 3}} ], # [ii]
+                {"c": {"d": 4}},     # [iii]
+            ]
+        }
+    }
+
+>>> dl.get(d, "a.b.c.d")
+[1, [3], 4]
+```

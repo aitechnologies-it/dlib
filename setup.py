@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pydlib", # Replace with your own username
-    version="0.3.0",
+    version="0.3.1",
     author="Luigi Di Sotto, Diego Giorgini",
     author_email="l.disotto@gmail.com, diego.giorgini@icloud.com",
     description="The Dictionary Library.",

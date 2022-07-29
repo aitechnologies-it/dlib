@@ -206,14 +206,14 @@ None
             }
         }
 
-    >>> print(dl.get(d, "a.b.c.d", search_lists=True))
+    >>> dl.get(d, "a.b.c.d", search_lists=True)
     [1, 3]
-    >>> print(dl.get(d, "a.b.c.d", search_lists=False))
+    >>> dl.get(d, "a.b.c.d", search_lists=False)
     None
 
     # But if instead we want to get `a.b`, no lists are traversed and both return the value of `b`
-    >>> print(dl.get(d, "a.b", search_lists=True))
+    >>> dl.get(d, "a.b", search_lists=True)
     [{'c': {'d': 1}}, [{'c': {'d': 3}}], {'c': {'d': 4}}]
-    >>> print(dl.get(d, "a.b", search_lists=False))
+    >>> dl.get(d, "a.b", search_lists=False)
     [{'c': {'d': 1}}, [{'c': {'d': 3}}], {'c': {'d': 4}}]
     ```

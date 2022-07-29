@@ -45,7 +45,7 @@ def get(d: Union[dict, list], path: str, sep: str = DEFAULT_SEP, default: Any = 
     return _get(d, path, sep=sep, search_lists=search_lists)
 
 
-def update(d: Union[dict, list], path: str, value: Any, sep: str = DEFAULT_SEP):
+def update(d: dict, path: str, value: Any, sep: str = DEFAULT_SEP):
     if not has(d, path, sep):
         return d
     keys = tuple(path.split(sep))

@@ -133,7 +133,7 @@ None
 
 ### Search inside lists
 
-```has()``` and ```get()``` can handle lists (can be disabled by setting ```search_lists=False```). this means that, if a list is encountered, the search for the rest of the path continues for each element of the list. A few examples are needed:
+```has()``` and ```get()``` (but not ```update``` and ```delete```!) can handle lists. This means that, if a list is encountered, the search for the rest of the path continues for each element of the list. A few examples are needed:
 
 - ```b``` is a list, get() will return a list with all dictionaries containing the rest of the path ```c.d```:
 
@@ -196,7 +196,7 @@ None
     [1, [3], 4]
     ```
 
-- Different behaviours for ```search_lists```:
+- Handling of lists can be disabled by setting ```search_lists=False```. Here's different behaviours for ```search_lists```:
     ```python
     >>> d = {"a":
                 {"b": [

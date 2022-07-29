@@ -1,10 +1,6 @@
 # :yarn: pydlib [![Downloads](https://pepy.tech/badge/pydlib)](https://pepy.tech/project/pydlib)
 The **py**thon **d**ictionary **lib**rary to get into complex nested python dictionary structures (e.g. json) in a safe and clean way. We take inspiration from Greek myth of Minotaur, where Ariadne with the help of a thread escaped the labyrinth with his beloved Theseus.
 
-## Overview
-
-* [src/pydlib](src/pydlib) contains all the underlying code implementing the pydlib functions.
-
 ## Installation
 
 To install **pydlib**, simply use `pip`:
@@ -21,9 +17,9 @@ $ cd dlib
 $ python setup.py install
 ```
 
-## Get Started
+## Basic usage
 
-### get
+### get()
 
 You can **get** the value from a nested field, just by indicating the path to the nested sub-structure as follows:
 
@@ -51,7 +47,7 @@ Instead, if the field we are looking for doesn't exists, or, if it exists but ha
 0
 ```
 
-### has
+### has()
 
 You can also test for a field simply calling:
 
@@ -63,7 +59,7 @@ You can also test for a field simply calling:
 True
 ```
 
-### update
+### update()
 
 Furthermore, the **pydlib** comes with built-in functions to also **update** and **delete** fields. For example, to **update**:
 
@@ -83,7 +79,7 @@ Furthermore, the **pydlib** comes with built-in functions to also **update** and
 }
 ```
 
-### delete
+### delete()
 
 Instead, to **delete**:
 
@@ -112,6 +108,8 @@ pydlib is **type safe**, in fact you don't have to manually check the type of in
 >>> res is None
 True
 ```
+
+## Advanced features
 
 ### Custom separator
 

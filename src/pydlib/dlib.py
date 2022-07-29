@@ -17,7 +17,7 @@ def _get(d: Union[dict, list], path: str, sep: str, search_lists: bool):
         if isinstance(curr, dict):
             curr = curr.get(k)
         elif search_lists:
-            curr = [get(el, k, sep=sep, search_lists=search_lists) for el in curr]
+            curr = [_get(el, k, sep=sep, search_lists=search_lists) for el in curr]
             curr = [el for el in curr if el is not None]
             curr = None if curr == [] else curr
     if len(keys) > 0:

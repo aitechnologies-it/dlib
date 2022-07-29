@@ -1,10 +1,6 @@
 # :yarn: pydlib [![Downloads](https://pepy.tech/badge/pydlib)](https://pepy.tech/project/pydlib)
 The **py**thon **d**ictionary **lib**rary to get into complex nested python dictionary structures (e.g. json) in a safe and clean way. We take inspiration from Greek myth of Minotaur, where Ariadne with the help of a thread escaped the labyrinth with his beloved Theseus.
 
-## Overview
-
-* [src/pydlib](src/pydlib) contains all the underlying code implementing the pydlib functions.
-
 ## Installation
 
 To install **pydlib**, simply use `pip`:
@@ -21,9 +17,9 @@ $ cd dlib
 $ python setup.py install
 ```
 
-## Get Started
+## Basic usage
 
-### get
+### get()
 
 You can **get** the value from a nested field, just by indicating the path to the nested sub-structure as follows:
 
@@ -51,7 +47,7 @@ Instead, if the field we are looking for doesn't exists, or, if it exists but ha
 0
 ```
 
-### has
+### has()
 
 You can also test for a field simply calling:
 
@@ -63,7 +59,7 @@ You can also test for a field simply calling:
 True
 ```
 
-### update
+### update()
 
 Furthermore, the **pydlib** comes with built-in functions to also **update** and **delete** fields. For example, to **update**:
 
@@ -83,7 +79,7 @@ Furthermore, the **pydlib** comes with built-in functions to also **update** and
 }
 ```
 
-### delete
+### delete()
 
 Instead, to **delete**:
 
@@ -113,6 +109,8 @@ pydlib is **type safe**, in fact you don't have to manually check the type of in
 True
 ```
 
+## Advanced features
+
 ### Custom separator
 
 It may happen that a dictionary has a string key with `.` in it. In this case you should use a different separator:
@@ -129,3 +127,93 @@ None
 # This works!
 >>> dl.get(d, "a/b.c", sep="/")
 42
+```
+
+### Search inside lists
+
+```has()``` and ```get()``` (but not ```update``` and ```delete```!) can handle lists. This means that, if a list is encountered, the search for the rest of the path continues for each element of the list. A few examples are needed:
+
+- ```b``` is a list, get() will return a list with all dictionaries containing the rest of the path ```c.d```:
+
+    ```python
+    >>> d = {"a":
+                {"b": [
+                    {"c":   {"d":   1}}, # <-- this
+                    {"bad": {"d":   2}},
+                    {"c":   {"d":   3}}, # <-- this
+                    {"c":   {"bad": 4}}
+                ]
+            }
+        }
+
+    >>> dl.get(d, "a.b.c.d")
+    [1, 3]
+    ```
+- this works also for nested lists. In this case a nested list of matching depth is returned:
+
+    ```python
+    >>> d = {"a":
+                {"b": [
+                    {"c":
+                        {"d": [
+                            {"e":   1},
+                            {"e":   2},
+                            {"bad": 3},
+                        ]}
+                    },
+                    {"bad":
+                        {"d": [
+                            {"e":   4},
+                        ]}
+                    },
+                    {"c":
+                        {"d": [
+                            {"e": 5},
+                        ]}
+                    },
+                ]
+            }
+        }
+
+    >>> dl.get(d, "a.b.c.d.e")
+    [[1, 2], [5]]
+    ```
+
+- In this case the elements of list ```b``` are of different types, ```(1)``` and ```(3)``` are dictionaries, ```(2)``` is a list:
+    ```python
+    >>> d = {"a":
+                {"b": [
+                    {"c": {"d": 1}},     # (1)
+                    [ {"c": {"d": 3}} ], # (2)
+                    {"c": {"d": 4}},     # (3)
+                ]
+            }
+        }
+
+    >>> dl.get(d, "a.b.c.d")
+    [1, [3], 4]
+    ```
+
+- Handling of lists can be disabled by setting ```search_lists=False```. Here's different behaviours for ```search_lists```:
+    ```python
+    >>> d = {"a":
+                {"b": [
+                    {"c":   {"d":   1}},
+                    {"bad": {"d":   2}},
+                    {"c":   {"d":   3}},
+                    {"c":   {"bad": 4}}
+                ]
+            }
+        }
+
+    >>> print(dl.get(d, "a.b.c.d", search_lists=True))
+    [1, 3]
+    >>> print(dl.get(d, "a.b.c.d", search_lists=False))
+    None
+
+    # But if instead we want to get `a.b`, no lists are traversed and both return the value of `b`
+    >>> print(dl.get(d, "a.b", search_lists=True))
+    [{'c': {'d': 1}}, [{'c': {'d': 3}}], {'c': {'d': 4}}]
+    >>> print(dl.get(d, "a.b", search_lists=False))
+    [{'c': {'d': 1}}, [{'c': {'d': 3}}], {'c': {'d': 4}}]
+    ```

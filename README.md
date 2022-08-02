@@ -1,6 +1,18 @@
 # :yarn: pydlib [![Downloads](https://pepy.tech/badge/pydlib)](https://pepy.tech/project/pydlib)
 The **py**thon **d**ictionary **lib**rary to get into complex nested python dictionary structures (e.g. json) in a safe and clean way. We take inspiration from Greek myth of Minotaur, where Ariadne with the help of a thread escaped the labyrinth with his beloved Theseus.
 
+## Why use pydlib
+
+Sometimes you have to navigate deep json dicts from remote sources, like elastic logs: you can make a series of ```.get()``` and check for ```None``` every time; or you can do ```obj["path"]["to"]["nested"]["field"]``` and wrap everything in a ```try/except```...
+
+Or you can use ```pydlib``` and write:
+
+```python
+pydlib.get(obj, "path.to.nested.field")
+```
+
+to get the value of ```field```, or ```None``` if anything is not a ```dict``` along the given path.
+
 ## Installation
 
 To install **pydlib**, simply use `pip`:

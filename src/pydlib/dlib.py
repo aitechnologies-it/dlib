@@ -39,7 +39,7 @@ def has(d: Union[dict, list], path: str, sep: str = DEFAULT_SEP, search_lists: b
     return curr is not None
 
 
-def get(d: Union[dict, list], path: str, sep: str = DEFAULT_SEP, default: Any = None, search_lists: bool = True):
+def get(d: Union[dict, list], path: str, default: Any = None, sep: str = DEFAULT_SEP, search_lists: bool = True):
     if not has(d, path, sep=sep, search_lists=search_lists):
         return default
     return _get(d, path, sep=sep, search_lists=search_lists)
